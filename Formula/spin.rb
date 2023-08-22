@@ -31,7 +31,7 @@ class Spin < Formula
     system "#{bin}/spin", "plugins", "install", "py2wasm", "--yes"
     system "#{bin}/spin", "plugins", "install", "cloud", "--yes"
     # Set permissions for local plugins repository
-    chmod_R(0755, pkgetc/"plugins")
+    chmod_R(0755, etc/"fermyon-spin/plugins")
   end
 
   test do

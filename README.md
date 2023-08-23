@@ -2,9 +2,9 @@
 
 ## How do I install these formulae?
 
-`brew install fermyon/tap/<formula>`
+### Spin
 
-Or `brew tap fermyon/tap` and then `brew install <formula>`.
+`brew tap fermyon/tap && brew install fermyon/tap/spin`
 
 ## Documentation
 

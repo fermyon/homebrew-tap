@@ -1,26 +1,33 @@
 class Spin < Formula
   desc "Open-source tool for building and running serverless WebAssembly applications"
   homepage "https://spin.fermyon.dev/"
-  url "https://github.com/fermyon/spin.git",
-    tag:      "v1.4.1",
-    revision: "e0bd9115fa51399e106681ac1c9ed1afbad1baaa"
-  license "Apache-2.0" => { with: "LLVM-exception" }
+  version "1.4.1"
 
-  depends_on "cmake" => :build
-  depends_on "rustup-init" => [:build, :test]
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://github.com/fermyon/spin/releases/download/v1.4.1/spin-v1.4.1-macos-amd64.tar.gz"
+    sha256 "d42abb4dc79affb5cbd6a0f4e2bc2837675dca23aed9587a85f4d86672ec7f6f"
+  end
 
-  uses_from_macos "zlib"
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://github.com/fermyon/spin/releases/download/v1.4.1/spin-v1.4.1-macos-aarch64.tar.gz"
+    sha256 "98c3130468bb3e40b0cf6c94d3a746562fe2b6323d04e57cbfe3f753a8c5ccfe"
+  end
 
-  on_linux do
-    depends_on "pkg-config" => :build
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/fermyon/spin/releases/download/v1.4.1/spin-v1.4.1-linux-amd64.tar.gz"
+    sha256 "199881bf6c676d698e8fc910f7dc37aaa557d5db5ad2e080f65c48bac5fa786a"
+  end
+
+  if OS.linux? && Hardware::CPU.arm?
+    url "https://github.com/fermyon/spin/releases/download/v1.4.1/spin-v1.4.1-linux-aarch64.tar.gz"
+    sha256 "2ecff49db739ec8d3c1ee6409bedfcfe8a9b67aec3867bc4349a2c2d764291ce"
   end
 
   def install
-    system "#{Formula["rustup-init"].bin}/rustup-init", "-qy", "--no-modify-path"
-    ENV.prepend_path "PATH", HOMEBREW_CACHE/"cargo_cache/bin"
-    system "rustup", "target", "add", "wasm32-wasi", "wasm32-unknown-unknown"
-    system "cargo", "install", *std_cargo_args
+    bin.install "spin"
+  end
 
+  def post_install
     # Install default templates and plugins for language tooling and deploying apps to the cloud.
     # Templates and plugins are installed into `pkgetc/"templates"` and `pkgetc/"plugins"`.
     system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin", "--upgrade"
@@ -35,11 +42,6 @@ class Spin < Formula
   end
 
   test do
-    system "#{Formula["rustup-init"].bin}/rustup-init", "-qy", "--no-modify-path"
-    ENV.prepend_path "PATH", HOMEBREW_CACHE/"cargo_cache/bin"
-    system "rustup", "target", "add", "wasm32-wasi", "wasm32-unknown-unknown"
-    system bin/"spin", "new", "http-rust", "test-app", "--accept-defaults"
-    system bin/"spin", "build", "--from", testpath/"test-app/spin.toml"
-    assert_predicate testpath/"test-app/target/wasm32-wasi/release/test_app.wasm", :exist?
+    system "#{bin}/spin", "--version"
   end
 end

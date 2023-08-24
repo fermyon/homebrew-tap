@@ -4,6 +4,7 @@
 
 ### Spin
 
+Install [Spin](https://developer.fermyon.com/spin/index):
 `brew tap fermyon/tap && brew install fermyon/tap/spin`
 
 ## Documentation

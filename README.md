@@ -2,9 +2,8 @@
 
 ## How do I install these formulae?
 
-### Spin
+### [Spin](https://developer.fermyon.com/spin/index)
 
-Install [Spin](https://developer.fermyon.com/spin/index):
 `brew tap fermyon/tap && brew install fermyon/tap/spin`
 
 ## Documentation

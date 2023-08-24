@@ -1,6 +1,6 @@
 class Spin < Formula
   desc "Open-source tool for building and running serverless WebAssembly applications"
-  homepage "https://spin.fermyon.dev/"
+  homepage "https://developer.fermyon.com/spin"
   version "1.4.1"
 
   if OS.mac? && Hardware::CPU.intel?

@@ -23,8 +23,6 @@ class Spin < Formula
     sha256 "2ecff49db739ec8d3c1ee6409bedfcfe8a9b67aec3867bc4349a2c2d764291ce"
   end
 
-  conflicts_with "spin"
-
   def install
     bin.install "spin"
   end

@@ -6,7 +6,7 @@
 
 `brew tap fermyon/tap && brew install fermyon/tap/spin`
 
-### bart / [Bartholomew](https://github.com/fermyon/bartholomew)
+### [bart / Bartholomew](https://github.com/fermyon/bartholomew)
 
 `brew tap fermyon/tap && brew install fermyon/tap/bart`
 

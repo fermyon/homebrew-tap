@@ -20,7 +20,7 @@ class Bart < Formula
 
   if OS.linux? && Hardware::CPU.arm?
     url "https://github.com/fermyon/bartholomew/releases/download/v0.9.0/bart-v0.9.0-linux-aarch64.tar.gz"
-    sha256 "5b031b864e03883ddb740aab8fd4ffaf306d043ba86f90bc5c123cef1ea7f006"  bart-v0.9.0-linux-aarch64.tar.gz
+    sha256 "5b031b864e03883ddb740aab8fd4ffaf306d043ba86f90bc5c123cef1ea7f006"
   end
 
   if OS.windows? # && Hardware::CPU.intel?

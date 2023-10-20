@@ -1,5 +1,5 @@
 class Bart < Formula
-  desc "The Micro-CMS for WebAssembly and Spin"
+  desc "Micro-CMS for WebAssembly and Spin"
   homepage "https://developer.fermyon.com/bartholomew"
   version "0.9.0"
 
@@ -23,11 +23,6 @@ class Bart < Formula
     sha256 "5b031b864e03883ddb740aab8fd4ffaf306d043ba86f90bc5c123cef1ea7f006"
   end
 
-  if OS.windows? # && Hardware::CPU.intel?
-    url "https://github.com/fermyon/bartholomew/releases/download/v0.9.0/bart-v0.9.0-windows-amd64.zip"
-    sha256 "9f0b067bbc17e0f85c4b9acd2bbc8f63c54b1dd2fa18153419a87ab95a676066"
-  end
-
   def install
     bin.install "bart"
   end
@@ -36,3 +31,4 @@ class Bart < Formula
     assert_match "bart 0.9.0", shell_output("#{bin}/bart --version")
   end
 end
+

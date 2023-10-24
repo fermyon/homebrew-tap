@@ -31,4 +31,3 @@ class Bart < Formula
     assert_match "bart 0.9.0", shell_output("#{bin}/bart --version")
   end
 end
-

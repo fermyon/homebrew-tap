@@ -28,7 +28,7 @@ class Bart < Formula
   end
 
   test do
-    assert shell_output("#{bin}/bart --version").start_with?("bart 0.9.0")
+    assert shell_output("#{bin}/bart --version").start_with?("bart #{version}")
   end
 end
 

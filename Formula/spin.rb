@@ -40,6 +40,6 @@ class Spin < Formula
   end
 
   test do
-    assert_match "spin 1.5.1 (8d4334e 2023-09-26)", shell_output("#{bin}/spin --version")
+    assert shell_output("#{bin}/spin --version").start_with?("spin 2.0.1")
   end
 end

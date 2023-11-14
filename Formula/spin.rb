@@ -43,4 +43,3 @@ class Spin < Formula
     assert_match "spin 1.5.1 (8d4334e 2023-09-26)", shell_output("#{bin}/spin --version")
   end
 end
-

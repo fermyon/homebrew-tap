@@ -40,6 +40,6 @@ class Spin < Formula
   end
 
   test do
-    system "#{bin}/spin", "--version"
+    assert shell_output("#{bin}/spin --version").start_with?("spin #{version}")
   end
 end

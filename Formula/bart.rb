@@ -31,4 +31,3 @@ class Bart < Formula
     assert shell_output("#{bin}/bart --version").start_with?("bart #{version}")
   end
 end
-

@@ -43,4 +43,3 @@ class Spin < Formula
     assert shell_output("#{bin}/spin --version").start_with?("spin #{version}")
   end
 end
-

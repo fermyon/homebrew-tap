@@ -1,0 +1,38 @@
+name: Bump Spin
+
+on:
+  repository_dispatch:
+    types:
+      - spin-release
+
+jobs:
+  create-pr:
+    name: Create PR with Spin Formula bumped
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Bump Spin Formula
+        shell: bash
+        run: ./scripts/bump-spin-formula.sh ${{ github.event.client_payload.version }}
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "chore(spin.rb): bump Spin to ${{ github.event.client_payload.version }}"
+          title: "chore(spin.rb): bump Spin to ${{ github.event.client_payload.version }}"
+          body: Update the Spin formula with ${{ github.event.client_payload.version }}
+          branch: bump-spin-${{ github.event.client_payload.version }}
+          base: main
+          delete-branch: true
+          committer: fermybot <103076628+fermybot@users.noreply.github.com>
+          author: fermybot <103076628+fermybot@users.noreply.github.com>
+          signoff: true

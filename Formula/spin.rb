@@ -35,6 +35,8 @@ class Spin < Formula
     system "#{bin}/spin", "templates", "install", "--git", "https://github.com/fermyon/spin-js-sdk", "--upgrade"
     system "#{bin}/spin", "plugins", "update"
     system "#{bin}/spin", "plugins", "install", "js2wasm", "--yes"
+    # Work around a bug where cloud plugin 0.10 registers as a downgrade from 0.9. Remove this after Spin 3.1
+    system "#{bin}/spin", "plugins", "uninstall", "cloud"
     system "#{bin}/spin", "plugins", "install", "cloud", "--yes"
   end
 

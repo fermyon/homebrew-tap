@@ -1,26 +1,26 @@
 class Spin < Formula
   desc "Open-source tool for building and running serverless WebAssembly applications"
   homepage "https://developer.fermyon.com/spin"
-  version "3.0.0"
+  version "3.1.0"
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://github.com/fermyon/spin/releases/download/v#{version}/spin-v#{version}-macos-amd64.tar.gz"
-    sha256 "4fa27d2237d776df439d992c9dd026651918c87ff91fad09ed5eb153496d0f60"
+    sha256 "7539826be8d3fd33917ca4649623ba744698463abebb7c96c92eb46e9c9974b4"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/fermyon/spin/releases/download/v#{version}/spin-v#{version}-macos-aarch64.tar.gz"
-    sha256 "eb1fb43c1e7fda8a980d5362361734c5cb3f11208bbef4ac5ad9b62a54c8781a"
+    sha256 "28f9454fefd1e499b0145a4ed3d46228e4a1c3a09c56859bedc7570b256a1ba4"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://github.com/fermyon/spin/releases/download/v#{version}/spin-v#{version}-linux-amd64.tar.gz"
-    sha256 "aff1774e3dd679e2f6476eeeb2c5fe79b156a56fbccf67bbb5d04ae0c1c53299"
+    sha256 "d2068371bbefa5263bcff0076889b59b64356615ab0d3d68d3d876657ed7843d"
   end
 
   if OS.linux? && Hardware::CPU.arm?
     url "https://github.com/fermyon/spin/releases/download/v#{version}/spin-v#{version}-linux-aarch64.tar.gz"
-    sha256 "0521710c9798edf38ec43a8057ee8525fd21ba9d58e4827f733ab07385bba920"
+    sha256 "bba5938439c3cdae7bd24283cdbae90563c756228babf29b389e9b270a25231d"
   end
 
   def install
